@@ -1,0 +1,40 @@
+.ui-g div {
+    text-align: center;
+}
+
+html body .custom.ui-button.ui-button-text-only .ui-icon-loading {
+    opacity: 0;
+}
+
+html body .custom.ui-button.ui-button-text-only .ui-icon-loading:before {
+    content: "\e94a";
+}
+
+html body .custom.ui-button, html body .custom.ui-button * {
+    transition-property: all;
+    transition-duration: .2s;
+}
+
+html body .custom.ui-button.ui-state-loading {
+    opacity: 1;
+    background: #888;
+    border-color: #888;
+}
+
+html body .custom.ui-button.ui-state-loading.ui-button-text-only .ui-button-text {
+    opacity: 1;
+    padding-left: 2rem;
+}
+
+html body .custom.ui-button.ui-state-loading.ui-button-text-only .ui-icon-loading {
+    opacity: 1;
+    left: 0;
+    margin-left: 0.5rem;
+}
+
+.top {
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    padding: 50px 0 0 50px;
+    z-index: 1000;
+}

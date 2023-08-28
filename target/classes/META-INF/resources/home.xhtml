@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="pages/template.xhtml">
+
+    <ui:define name="title">Contactos</ui:define>
+    <ui:define name="content">
+        <h:form id="formHome" enctype="multipart/form-data">
+            <p:growl id="growl-sticky"
+                     for="sticky-key"
+                     showDetail="true"/>
+            <p:toolbar>
+                <p:toolbarGroup align="right">
+                    <p:fileUpload value="#{homeController.file}"
+                                  mode="simple"
+                                  widgetVar="fileUploadhome"
+                                  skinSimple="true"
+                                  chooseIcon="pi pi-download"
+                                  uploadButtonStyleClass="ui-button-danger"
+                                  label="Importar"
+                                  chooseButtonStyleClass="ui-button-help"
+                                  fileLimitMessage="ha excedido el número maximo de archivos"
+                                  invalidFileMessage="Tipo de archivo invalido"
+                                  sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(csv)$/"
+                                  validateContentType="true" accept=".csv"/>
+                    <p:commandButton id="submitUpload" value="Subir archivo"
+                                     widgetVar="submitUpload"
+                                     update="growl-sticky"
+                                     icon="pi pi-upload" action="#{homeController.upload}"
+                                     styleClass="ui-button-help"
+                    />
+                </p:toolbarGroup>
+                <p:toolbarGroup align="right">
+                    <p:commandButton icon="pi pi-file-excel"
+                                     id="test"
+                                     ajax="false" action="#{homeController.downloadSample()}"
+                                     styleClass="rounded-button ui-button-success"/>
+                    <p:tooltip for="test" value="Descargar archivo de prueba" position="right" showEffect="clip" hideEffect="fold" />
+                    <p:commandButton id="loadId"
+                                     title="Recargar datos"
+                                     icon="pi pi-refresh"
+                                     update="dataItems"
+                                     widgetVar="load" actionListener="#{homeController.refresh()}"
+                                     styleClass="rounded-button ui-button"/>
+                    <p:tooltip for="loadId" value="Recargar datos" position="right" showEffect="clip" hideEffect="fold" />
+                </p:toolbarGroup>
+
+            </p:toolbar>
+            <p:dataTable value="#{homeController.items}"
+                         id="dataItems"
+                         var="item"
+                         first="0"
+                         rows="10"
+                         paginator="true"
+                         lazy="true"
+                         paginatorPosition="both"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                         rowsPerPageTemplate="5,10,20"
+                         emptyMessage="No se han encontrado registros">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{item.name}"/>
+                </p:column>
+                <p:column headerText="Telefono">
+                    <h:outputText value="#{item.phone}"/>
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
