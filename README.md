@@ -1,5 +1,7 @@
 # Challenge
-lista de contactos
+lista de contactos, el proyecto se realizo de forma intuitiva para utilizando una vista
+para poder descar un ejemplo de la lista de contactos y subiendo el archivo alojado en el pc, también
+se podrá visualizar lo que se ha importado
 
 ## Tecnologias
 
@@ -48,6 +50,12 @@ public class ChallengeContactsApplication {
 }
 
 ```
+## Imagenes del proyecto
+
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
 
 
