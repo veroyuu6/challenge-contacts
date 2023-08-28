@@ -21,7 +21,7 @@ se podrá visualizar lo que se ha importado
 
 ##### Clonar del repositorio
 ```
-git clone -b master https://github.com/andresmen30/Project-Mutant.git
+git clone https://github.com/veroyuu6/challenge-contacts.git
 ```
 
 ##### Compilar
